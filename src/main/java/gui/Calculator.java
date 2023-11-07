@@ -143,7 +143,7 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 			} else if (value.equals("=")) {
 				if (operator != null && number1.isEmpty()== false) {
 					number2 = text.substring(text.lastIndexOf(operator) + 1);
-					
+					calculo();
 				}
 			} else if (value.equals("C")) {
 				reset();
@@ -156,6 +156,31 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 	
 		private void reset() {
 			displayText.setText("");
+			operator = null;
+			number1 = "";
+			number2 = "";
+		}
+		
+		private void calculo() {
+			double total = 0;
+			double cifra1 = Double.parseDouble(number1);
+			double cifra2 = Double.parseDouble(number2);
+			
+			switch (operator) {
+				case "/":
+					total = cifra1 / cifra2;
+					break;
+				case "*":
+					total = cifra1 * cifra2;
+					break;
+				case "-":
+					total = cifra1 - cifra2;
+				case "+":
+					total = cifra1 + cifra2;
+					break;
+			}
+			
+			displayText.setText(String.valueOf(total));
 			operator = null;
 			number1 = "";
 			number2 = "";
