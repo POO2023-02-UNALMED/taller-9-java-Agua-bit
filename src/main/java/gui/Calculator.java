@@ -127,10 +127,26 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 		
 		Button b = (Button) event.getSource();
 		String value = b.getText();
+		double total;
+		String text = displayText.getText();		
 		
-		***
-		***
-		***
+		if(b instanceof Button) {
+			if (value.equals("/") || value.equals("*") || value.equals("-") || value.equals("+")) {
+				if (operator == null) {
+					operator = value;
+					number1 = text;
+					displayText.setText(text + value);
+				} else {
+					displayText.setText("Operacion no valida");
+				}
+				
+			} else if (value.equals("=")) {
+				if (operator != null && number1.isEmpty()== false) {
+					number2 = text.substring(text.lastIndexOf(operator) + 1);
+					
+				}
+			}
+		}
 		
 	}
 	
