@@ -145,10 +145,20 @@ public class Calculator extends VBox implements EventHandler<ActionEvent>{
 					number2 = text.substring(text.lastIndexOf(operator) + 1);
 					
 				}
+			} else if (value.equals("C")) {
+				reset();
+			} else {
+				displayText.setText(text + value);
 			}
 		}
 		
 	}
 	
+		private void reset() {
+			displayText.setText("");
+			operator = null;
+			number1 = "";
+			number2 = "";
+		}
 
 }
